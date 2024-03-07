@@ -1,0 +1,11 @@
+version: "3.3"
+
+services:
+  fibo_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    environment:
+      - APP_NAME=SIMPLE_FIBONACCI_SERVER
+    command: /bin/bash -c ./docker-entrypoint.sh
