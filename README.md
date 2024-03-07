@@ -1,4 +1,4 @@
-# simple-fibonacci-server
+# Simple Fibonacci Server (SFS)
 
 Simple Fibonacci Server is a Go application that calculates Fibonacci numbers. It supports both command-line and HTTP server modes, providing a versatile way to interact with Fibonacci number calculations.
 
