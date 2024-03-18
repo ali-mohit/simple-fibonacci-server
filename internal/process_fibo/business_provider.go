@@ -3,10 +3,12 @@ package process_fibo
 import (
 	"errors"
 	"github.com/ali-mohit/simple-fibonacci-server/internal/cache_fibo"
+	"math/big"
 )
 
 type FibonacciProcessHandler interface {
 	ProcessFibonacciNumber(req *FibonacciRequest) (*FibonacciResponse, error)
+	ProcessFibonacciNumberV2(req *FibonacciRequestV2) (*FibonacciResponse, error)
 }
 
 type processHandler struct {
@@ -45,5 +47,25 @@ func (s *processHandler) ProcessFibonacciNumber(req *FibonacciRequest) (*Fibonac
 	}
 	return &FibonacciResponse{
 		N: b,
+	}, nil
+}
+
+func (s *processHandler) ProcessFibonacciNumberV2(req *FibonacciRequestV2) (*FibonacciResponse, error) {
+
+	a := &big.Int{}
+	a.SetInt64(1)
+
+	b := &big.Int{}
+	b.SetInt64(1)
+
+	i := 0
+	for b.Cmp(req.N) <= 0 {
+		a.Add(a, b)
+		a, b = b, a
+		i = i + 1
+	}
+
+	return &FibonacciResponse{
+		N: a.Add(a, b),
 	}, nil
 }
