@@ -10,7 +10,8 @@ func main() {
 	rootCmd := &cobra.Command{}
 
 	rootCmd.AddCommand(getServeCommand())
-	rootCmd.AddCommand(getConsoleCommand())
+	rootCmd.AddCommand(getConsoleFibonacciCommand())
+	rootCmd.AddCommand(getConsoleFibonacciV2Command())
 	rootCmd.AddCommand(getVersionCommand())
 
 	if err := rootCmd.Execute(); err != nil {

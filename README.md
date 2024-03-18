@@ -31,6 +31,7 @@ make fibo_app
 ```
 
 ## Running the Application in console
+### 1- Console Fibonacci command
 Command-line Interface
 
 To calculate a Fibonacci number using the command line:
@@ -38,6 +39,16 @@ To calculate a Fibonacci number using the command line:
 ./fibo_app fibonacci [number]
 ```
 Replace [number] with the Fibonacci sequence index you want to calculate.
+
+### 2- Console Fibonacci-v2 command
+Command-line Interface
+
+To calculate a Fibonacci number using the prev fibonacci number command line:
+```bash
+./fibo_app fibonacci-v2 [(i)th number in fibonacci sequence]
+```
+Replace [number] with the (i)th Fibonacci value that you want to return (i+1)th.
+
 
 ## Running the Application on http server
 To start the HTTP server:
@@ -61,6 +72,7 @@ docker-compose up
 ```
 
 ## API Reference
+### 1- POST: /fibonacci
 `POST:` `/fibonacci`
 
 `Content-Type: application/json or application/x-msgpack`
@@ -75,6 +87,23 @@ Response:
 ```json
 {
   "n": 55
+}
+```
+### 2- POST: /fibonacci-v2
+`POST:` `/fibonacci-v2`
+
+`Content-Type: application/json or application/x-msgpack`
+
+Request Body (55 is 10th number in fibonacci sequence):
+```json
+{
+  "n": 55
+}
+```
+Response (89 is 11th number in fibonacci sequence):
+```json
+{
+  "n": 89
 }
 ```
 
